@@ -8,7 +8,7 @@ exports.Query = {
     products: ()=> productFromFile,
     product: (parent, args, context) => {
         const {id } = args;
-        return productFromFile.find((product) => product.id === id);
+        return productFromFile.find((product) => product.id === Number(id));
     },
     categories: () => categories,
     category:( parent,args,context)=>{
