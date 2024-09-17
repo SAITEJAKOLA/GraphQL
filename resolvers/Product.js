@@ -1,8 +1,8 @@
-const categoriesFromFile = require('../Sources/Categories');
 
 exports.Product ={
-    category:(parent, args, context)=>{
+    category:(parent, args, { categoriesFromFile })=>{
         const categoryId = parent.categoryId;
+        const { categoriesFromFile } = context
         return categoriesFromFile.find((cat) => cat.id === categoryId);
     }
 }
