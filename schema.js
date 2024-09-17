@@ -9,7 +9,7 @@ const typeDefs = gql`
         product(id: ID!): Product
         categories: [Category]!
         category(id: ID!): Category
-
+        reviews: [Review!]!
     }
 
     type Product {
@@ -21,6 +21,7 @@ const typeDefs = gql`
         image: String!
         onSale: Boolean!
         category: Category
+        reviews: [Review]!
     }
 
     type Category {
@@ -28,6 +29,14 @@ const typeDefs = gql`
         name: String!
         products: [Product!]!
     } 
+
+    type Review {
+        id: ID!
+        date: String!
+        rating: Int!
+        title: String!
+        comment: String!
+    }
 `;
 
 module.exports = typeDefs;

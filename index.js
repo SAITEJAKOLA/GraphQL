@@ -4,6 +4,7 @@ const { Product } = require("./resolvers/Product");
 const { Category } = require("./resolvers/Category");
 const productFromFile = require('./Sources/Products');
 const categoriesFromFile = require('./Sources/Categories');
+const reviewsFromFile = require("./Sources/Review")
 const typeDefs = require("./schema");
 
 const server = new ApolloServer({
@@ -15,7 +16,8 @@ const server = new ApolloServer({
     },
     context:{
         productFromFile,
-        categoriesFromFile
+        categoriesFromFile,
+        reviewsFromFile
     }
 });
 
