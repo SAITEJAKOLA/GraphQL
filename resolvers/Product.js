@@ -1,4 +1,3 @@
-const reviews = require("../Sources/Review");
 
 exports.Product = {
     category: (parent, args, { categoriesFromFile }) => {

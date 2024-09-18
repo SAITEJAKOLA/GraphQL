@@ -2,6 +2,7 @@ const { ApolloServer } = require('apollo-server');
 const { Query } = require("./resolvers/Query");
 const { Product } = require("./resolvers/Product");
 const { Category } = require("./resolvers/Category");
+const { Mutation } = require("./resolvers/Mutation");
 const productFromFile = require('./Sources/Products');
 const categoriesFromFile = require('./Sources/Categories');
 const reviewsFromFile = require("./Sources/Review")
@@ -9,12 +10,13 @@ const typeDefs = require("./schema");
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers:{
+    resolvers: {
         Query,
         Product,
-        Category
+        Category,
+        Mutation
     },
-    context:{
+    context: {
         productFromFile,
         categoriesFromFile,
         reviewsFromFile

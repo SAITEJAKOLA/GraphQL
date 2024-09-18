@@ -5,11 +5,17 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
     type Query {
         hello: String!
-        products: [Product!]!
+        products(filter: ProductsFilterInput): [Product!]!
         product(id: ID!): Product
         categories: [Category]!
         category(id: ID!): Category
         reviews: [Review!]!
+    }
+
+    type Mutation {
+        addCategory(input: AddCategoryInput!): Category!
+        addProduct(input: AddProductInput!): Product!
+        addReview(input: AddReviewInput!): Review!    
     }
 
     type Product {
@@ -26,8 +32,8 @@ const typeDefs = gql`
 
     type Category {
         id: ID!
-        name: String!
-        products: [Product!]!
+        name: String!   
+        products(filter: ProductsFilterInput): [Product!]!
     } 
 
     type Review {
@@ -37,6 +43,34 @@ const typeDefs = gql`
         title: String!
         comment: String!
     }
+
+    input ProductsFilterInput {
+        onSale: Boolean
+        rating: Int
+    }
+
+    input AddCategoryInput {
+        name: String!
+    }
+
+    input AddProductInput {
+        name: String!
+        description: String!
+        quantity: Int!
+        image: String!
+        price: Float!
+        onSale: Boolean!
+        categoryId: String
+    }
+
+    input AddReviewInput {
+        date: String!
+        title: String!
+        comment: String!
+        rating: Int!
+        productId: ID!
+    }
+
 `;
 
 module.exports = typeDefs;
