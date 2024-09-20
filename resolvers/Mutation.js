@@ -37,5 +37,9 @@ exports.Mutation = {
         }
         reviewsFromFile.push(newReview)
         return newReview;
+    },
+    deleteCategory: (parent, { id }, { categoriesFromFile }) => {
+        categoriesFromFile = categoriesFromFile.filter((cat) => cat.id !== id);
+        return true;
     }
 }
